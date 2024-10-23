@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/tickets")
 public class WebController {
@@ -16,12 +18,13 @@ public class WebController {
     @GetMapping
     public String getHome(Model model) {
         model.addAttribute("tickets", TicketService.getTickets());
+//        model.addAttribute("tickets", List.of(new Ticket()));
         return "home";
     }
 
     @PostMapping
     public String postHome(@ModelAttribute Ticket ticket) {
-        TicketService.createTicket(ticket);
+//        TicketService.createTicket(ticket);
         return "redirect:/tickets";
     }
 }
