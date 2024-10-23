@@ -23,5 +23,6 @@
 hs_err_pid*
 replay_pid*
 
+# gitignore for application.properties
 application.properties
 *.properties
