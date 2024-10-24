@@ -17,7 +17,7 @@ public class WebController {
 
     @GetMapping
     public String getHome(Model model) {
-        model.addAttribute("tickets", TicketService.getTickets());
+//        model.addAttribute("tickets", TicketService.getTickets());
         return "home";
     }
 
