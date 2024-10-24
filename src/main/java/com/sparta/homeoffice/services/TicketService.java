@@ -5,6 +5,7 @@ import com.sparta.homeoffice.entities.Ticket;
 import com.sparta.homeoffice.repositories.TicketRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -29,8 +30,8 @@ public class TicketService {
         ticketRepository.save(ticket);
     }
 
-    public void getAllTickets() {
-
+    public List<Ticket> getAllTickets() {
+        return ticketRepository.findAll();
     }
 
     public boolean updateTicketById(Integer id, TicketDTO ticketUpdateDetails) {
