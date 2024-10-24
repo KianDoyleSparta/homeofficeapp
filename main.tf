@@ -8,7 +8,7 @@ resource "aws_instance" "jamescole_app_instance" {
   key_name      = "AIprojectkeyjamescole" # Replace with your key pair name
 
   # Security group to allow SSH and HTTP access
-  vpc_security_group_ids = [aws_security_group.my_app_sg.id]
+  vpc_security_group_ids = [aws_security_group.jamescole_app_sg.id]
 
   # User data script to install dependencies and clone the repository
   user_data = <<-EOF
