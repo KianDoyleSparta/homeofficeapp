@@ -18,7 +18,7 @@ public class TicketService {
         this.ticketRepository = ticketRepository;
     }
 
-    public void createNewTicket(String category, String priority, String state, String assigned, String shortDesc, String desc, String type) {
+    public int createNewTicket(String category, String priority, String state, String assigned, String shortDesc, String desc, String type) {
         Ticket ticket = new Ticket();
         ticket.setCategory(category);
         ticket.setPriority(priority);
@@ -28,10 +28,20 @@ public class TicketService {
         ticket.setDesc(desc);
         ticket.setType(type);
         ticketRepository.save(ticket);
+        return ticket.getId();
     }
 
     public List<Ticket> getAllTickets() {
         return ticketRepository.findAll();
+    }
+
+    public Ticket getTicketById(int id) {
+        Optional<Ticket> ticket = ticketRepository.findById(id);
+        if (ticket.isPresent()) {
+            return ticket.get();
+        } else {
+            throw new IllegalArgumentException("Ticket with id " + id + " not found");
+        }
     }
 
     public boolean updateTicketById(Integer id, TicketDTO ticketUpdateDetails) {
