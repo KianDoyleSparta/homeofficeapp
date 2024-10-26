@@ -22,7 +22,7 @@ resource "aws_instance" "jamescole_app_instance" {
               # sudo tar -xzf temurin-17.0.1+12-linux-x64.tar.gz -C /opt
               # sudo update-alternatives --install /usr/bin/java java /opt/temurin-17.0.1+12/bin/java 1
               # sudo update-alternatives --install /usr/bin/javac javac /opt/temurin-17.0.1+12/bin/javac 1
-              # echo "export JAVA_HOME=/opt/temurin-17.0.1+12" >> ~/.bashrc
+              # echo "export JAVA_HOME=/opt/temurin-17.0.9+9" >> ~/.bashrc
               # echo "export PATH=\$JAVA_HOME/bin:\$PATH" >> ~/.bashrc
               # source ~/.bashrc
 
@@ -33,11 +33,20 @@ resource "aws_instance" "jamescole_app_instance" {
               cd homeofficeapp
               # Optionally, you can run Maven build or any other commands here
               # mvn clean install
-              # sudo apt install maven -y
+              sudo apt install maven -y
               wget https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.9%2B9/OpenJDK17U-jdk_x64_linux_hotspot_17.0.9_9.tar.gz
               sudo tar -xzf OpenJDK17U-jdk_x64_linux_hotspot_17.0.9_9.tar.gz -C /opt
               sudo update-alternatives --install /usr/bin/java java /opt/jdk-17.0.9+9/bin/java 1
+              echo "export JAVA_HOME=/opt/temurin-17.0.9+9" >> ~/.bashrc
 
+              # ensure docker is present and running 
+
+              cd ..
+              sudo apt update
+              sudo apt install -y docker.io
+              sudo systemctl start docker
+              sudo systemctl enable docker
+              sudo usermod -aG docker ubuntu
 
 
               EOF
