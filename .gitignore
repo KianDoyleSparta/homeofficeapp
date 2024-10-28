@@ -209,3 +209,8 @@ out/
 # VS Code
 .vscode
 .vs
+
+*.terraform
+*.hcl
+*.tfstate
+*.tfstate.backup
