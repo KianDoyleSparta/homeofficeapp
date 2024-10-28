@@ -211,7 +211,7 @@ out/
 .vs
 
 *.lock.hcl
+*.terraform
+*.hcl
 *.tfstate
 *.tfstate.backup
-
-*.terraform
